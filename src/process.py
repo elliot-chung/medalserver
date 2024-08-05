@@ -44,7 +44,7 @@ def medals_per_100_athletes() -> data_type:
         gold_per_100 = gold_per_athlete * 100
         total_per_100 = total_per_athlete * 100
 
-        item = (country_name, bronze_per_100, silver_per_100, gold_per_100, total_per_100, athlete_count)
+        item = (country_name, bronze_per_100, bronze_count, silver_per_100, silver_count, gold_per_100, gold_count, total_per_100, total_count, athlete_count)
         output.append(item)
     return output
 
