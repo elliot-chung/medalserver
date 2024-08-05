@@ -6,6 +6,7 @@ from typing import List, Tuple
 data_type = List[Tuple[str, float, float, float, float, int]]
 
 def medals_per_100_athletes() -> data_type:
+    epsilon = 0.00001
     output = []
     try:
         medal_data = medal_fetch.fetch_data()
@@ -23,6 +24,11 @@ def medals_per_100_athletes() -> data_type:
         silver_count = medal_result['medalsWon']['Silver']
         gold_count = medal_result['medalsWon']['Gold']
         total_count = medal_result['medalsWon']['Total']
+
+        bronze_count = bronze_count if bronze_count > 0 else epsilon
+        silver_count = silver_count if silver_count > 0 else epsilon
+        gold_count = gold_count if gold_count > 0 else epsilon
+        total_count = total_count if total_count > 0 else epsilon
         
         country_key = medal_result['team']['shortName']['rawName']
         athlete_count = count_dict.get(country_key, 1)
